@@ -46,6 +46,11 @@ docker run --name test-ssh -p 2222:2222 \
     -e PASSWORD_ACCESS=true -d linuxserver/openssh-server
 ```
 
+SFTP 서버 내부에 테스트 파일을 생성하려면 다음 명령어를 실행합니다:
+```bash
+docker exec -it test-ssh /bin/bash -c "mkdir -p /remote/dir && echo 'Sample Data' > /remote/dir/WE.ARE.202404.DAT"
+```
+
 ### 5.2. 프로젝트 빌드 및 실행
 #### 1) 컴파일
 ```bash
@@ -60,4 +65,6 @@ java -cp .:lib/jsch-0.2.24.jar:out io.github.lahuman.SftpDownloader config.prope
 ## 6. 결론
 Docker를 활용하여 로컬에서 간편하게 SFTP 서버를 구축하고 테스트할 수 있도록 개선하였습니다.
 이를 활용하면 다양한 SFTP 파일 전송 자동화 작업을 안정적으로 수행할 수 있습니다.
+
+
 
